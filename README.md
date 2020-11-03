@@ -35,11 +35,11 @@ With autocompleter you can alleviate  burden of seeking zip code:
 
 -- entry for today
 
-![autocompletion](https://github.com/anaruz-source/weather-journal-app/blob/master/readmeassets/entry.png?raw=true)
+![one day entry](https://github.com/anaruz-source/weather-journal-app/blob/master/readmeassets/entry.png?raw=true)
 
 -- next days entries
 
-![autocompletion](https://github.com/anaruz-source/weather-journal-app/blob/master/readmeassets/auto.png?raw=true)
+![next comming days entries](https://github.com/anaruz-source/weather-journal-app/blob/master/readmeassets/entries.png?raw=true)
 
 Switch between Temperature degrees (Kelvin, Celsius, Fahrenheit)
 
