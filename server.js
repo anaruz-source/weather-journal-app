@@ -7,7 +7,7 @@ const express = require('express'),
    // Start up an instance of app
    app = express(),
 
-   port = 3030,
+   port = process.env.PORT || 3030, //heroku requirements
 
    server = app.listen(port, () => {
       console.log(`NODE SERVER RUNNING ON LOCALHOST:${port}`);
