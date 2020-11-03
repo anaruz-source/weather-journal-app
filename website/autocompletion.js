@@ -7,7 +7,7 @@ let cities = null,
 
     selectedIdx = -1;
 
-const localJson = 'http://localhost:3030/cities.json',
+const localJson = 'https://weather-app-journal.herokuapp.com/cities.json',
 
     city = document.getElementById('city'),
 
