@@ -17,7 +17,7 @@ const localJson = 'https://weather-app-journal.herokuapp.com/cities.json',
 
     filtered = [],
 
-    LIMIT_FILTERED = 10,
+    LIMIT_FILTERED = 10, // limit entries of dropdown menu
 
 
     useLocalData = async () => {

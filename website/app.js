@@ -5,11 +5,11 @@ let d = new Date();
 let newDate = formatDate(d),
     anchors = [],
     spans = [],
-    activeCity= [];
-  // list of anchors contained in the page
+    activeCity = [];
+// list of anchors contained in the page
 
 const forEach = Array.prototype.forEach,
-    
+
     keyOWM = 'd0292cfa3ead2c82536eb9d6f253d0d0',
 
     UrlWeather = 'http://api.openweathermap.org/data/2.5/weather',
@@ -25,47 +25,51 @@ const forEach = Array.prototype.forEach,
     generate = document.getElementById('generate'),
 
     userResponse = document.getElementById('feelings'),
-    
+
     error = document.getElementById('error'),
-    
+
     days = [],
 
 
-// helper functions
+    // helper functions
 
     simplCelsiusFahrenheitConversion = (val, degree = 'k') => {
 
-        return degree == 'c' ? (val - 273.15).toFixed(0) :// Kelvin to Celsius
+        return degree == 'c' ? (val - 273.15).toFixed(0) : // Kelvin to Celsius
 
-            degree == 'f' ? ((val - 273.15) * 9 / 5 + 32).toFixed(0): val; // Kelvin to Fahrenheit
+            degree == 'f' ? ((val - 273.15) * 9 / 5 + 32).toFixed(0) : val; // Kelvin to Fahrenheit
 
 
     },
 
-   toCelsiusOrFahrenheit = (data, degree) => { // Standard to Metric and imperial conversions as OMW uses Kelvin by default
+    toCelsiusOrFahrenheit = (data, degree) => { // Standard to Metric and imperial conversions as OMW uses Kelvin by default
 
 
-    const formula = degree == 'c' || degree == 'f' ? function (val) { return simplCelsiusFahrenheitConversion(val, degree) } : function (a) { return a };   //Kelvin to Fahrenheit
+        const formula = degree == 'c' || degree == 'f' ? function (val) {
+            return simplCelsiusFahrenheitConversion(val, degree)
+        } : function (a) {
+            return a
+        }; //Kelvin to Fahrenheit
 
-    return data.map(item => {
+        return data.map(item => {
 
-        return {
-            dt: item.dt,
-            temp: formula(item.temp),
-            clouds: item.clouds,
-            dew_point: item.dew_point,
-            feels_like: item.feels_like,
-            humidity: item.humidity,
-            pop: item.pop,
-            pressure: item.pressure,
-            visibility: item.visibility,
-            weather: item.weather,
-            wind_deg: item.wind_deg,
-            wind_speed: item.wind_speed
-        };
+            return {
+                dt: item.dt,
+                temp: formula(item.temp),
+                clouds: item.clouds,
+                dew_point: item.dew_point,
+                feels_like: item.feels_like,
+                humidity: item.humidity,
+                pop: item.pop,
+                pressure: item.pressure,
+                visibility: item.visibility,
+                weather: item.weather,
+                wind_deg: item.wind_deg,
+                wind_speed: item.wind_speed
+            };
 
-    })
-},
+        })
+    },
 
     // async help functions to add listener to anchors
 
@@ -79,56 +83,56 @@ const forEach = Array.prototype.forEach,
 
     // hide/show spans containing other temp units (Kelvin, Celsius, Fahrenheit) 
 
-   ShowHideSpan = async className => forEach.call(spans, sp => { 
-    
-    if (sp.className == 'other') return;
+    ShowHideSpan = async className => forEach.call(spans, sp => {
 
-    sp.className == className  ? sp.style.display = 'inline' : sp.style.display = 'none'});
+        if (sp.className == 'other') return;
 
-
-activeDeactLink = async href => forEach.call(anchors, a => a.href[a.href.length - 1] == href ? (a.style.textDecoration = 'none', a.style.color = 'green') : (a.style.textDecoration  = 'underline', a.style.color = ''));
-
-   /*********************************************************************
-    * ***************************************************
-    * ********************************************
-    * 
-    *  Required functions to complete this nanodegree project
-    * 
-    * *********************************************
-    * ********************************************************
-    * *********************************************************************/
+        sp.className == className ? sp.style.display = 'inline' : sp.style.display = 'none'
+    });
 
 
-    // function to perform fetch to openWeatherMap (Multipurpose function used to execute any fetch local/remote)
+activeDeactLink = async href => forEach.call(anchors, a => a.href[a.href.length - 1] == href ? (a.style.textDecoration = 'none', a.style.color = 'green') : (a.style.textDecoration = 'underline', a.style.color = ''));
+
+/*********************************************************************
+ * ***************************************************
+ * ********************************************
+ * 
+ *  Required functions to complete this nanodegree project
+ * 
+ * *********************************************
+ * ********************************************************
+ * *********************************************************************/
 
 
-    performFetch = async (url, options = {}) => {
-
-        const response = await fetch(url, options);
-
-        try {
-
-            const data = await response.json();
+// function to perform fetch to openWeatherMap (Multipurpose function used to execute any fetch local/remote)
 
 
-            if ((data.cod && data.cod != '200') || (data[0] && data[0].cod && data[0].cod != '200')) throw new Error(data.message); // fetch doesn't throw in case a city not found! we don't want to fill endpoint with empty data:
+performFetch = async (url, options = {}) => {
+
+    const response = await fetch(url, options);
+
+    try {
+
+        const data = await response.json();
 
 
-            error.style.display = 'none';
+        if ((data.cod && data.cod != '200') || (data[0] && data[0].cod && data[0].cod != '200')) throw new Error(data.message); // fetch doesn't throw in case a city not found! we don't want to fill endpoint with empty data:
 
-            return data;
 
-        } catch (err) {
+        error.style.display = 'none';
 
-            //   throw new Error(err.message);
+        return data;
 
-            error.textContent = err.message;
-            error.style.display = "block";
-          
-                    
-            
-            }
-    },
+    } catch (err) {
+
+        //   throw new Error(err.message);
+
+        error.textContent = err.message;
+        error.style.display = "block";
+
+
+    }
+},
 
     getEndpointData = async (url = '') => {
 
@@ -139,7 +143,7 @@ activeDeactLink = async href => forEach.call(anchors, a => a.href[a.href.length 
             return data;
 
         } catch (err) {
-           
+
 
             error.textContent = err.message;
             error.style.display = "block";
@@ -168,7 +172,7 @@ activeDeactLink = async href => forEach.call(anchors, a => a.href[a.href.length 
             return datar;
 
         } catch (err) {
-          
+
 
             error.textContent = err.message;
             error.style.display = "block";
@@ -182,83 +186,83 @@ activeDeactLink = async href => forEach.call(anchors, a => a.href[a.href.length 
 
 
         const entryHolder = document.getElementById('entryHolder'),
-              
-              canvas = document.getElementById('myChart');
-       
-              error.style.display = 'none';
 
-        !isEmptyObj(data) ? ( function(){ const d = document.getElementById('date'), // ternary exp, to prevent updating UI if data undefined
+            canvas = document.getElementById('myChart');
 
-            temp = document.getElementById('temp'),
+        error.style.display = 'none';
 
-            content = document.getElementById('content'),
+        !isEmptyObj(data) ? (function () {
+            const d = document.getElementById('date'), // ternary exp, to prevent updating UI if data undefined
 
-            cityName = document.getElementById('name'),
+                temp = document.getElementById('temp'),
 
-            icon = document.getElementById('icon'),
+                content = document.getElementById('content'),
 
-            desc = document.getElementById('desc'),
+                cityName = document.getElementById('name'),
 
-            humidity = document.getElementById('humidity'),
-            feels_like = document.getElementById('feels_like'),
-            wind_speed = document.getElementById('wind_speed'),
-            pressure = document.getElementById('pressure'),
-            visibility = document.getElementById('visibility');
+                icon = document.getElementById('icon'),
+
+                desc = document.getElementById('desc'),
+
+                humidity = document.getElementById('humidity'),
+                feels_like = document.getElementById('feels_like'),
+                wind_speed = document.getElementById('wind_speed'),
+                pressure = document.getElementById('pressure'),
+                visibility = document.getElementById('visibility');
 
 
-        cityName.textContent = data.name;
+            cityName.textContent = data.name;
 
-        d.textContent = data.date;
+            d.textContent = data.date;
 
-        icon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            icon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
-        desc.textContent = data.weather[0].description;
+            desc.textContent = data.weather[0].description;
 
-        temp.innerHTML = `<span class="k">${data.main.temp.toFixed(0)}</span> <span class="c">${simplCelsiusFahrenheitConversion(data.main.temp,'c')}</span> <span class="f">${simplCelsiusFahrenheitConversion(data.main.temp, 'f')}</span>` + '<sup><a href="k">°K</a>|<a href="c">°C</a>|<a href="f">°F</a></sup>';
-        
-        feels_like.innerHTML = `<span class="other">Feels like<></span><span class="k"> ${data.main.feels_like.toFixed(0)}</span> <span class="c"> ${simplCelsiusFahrenheitConversion(data.main.feels_like,'c')}</span> <span class="f"> ${simplCelsiusFahrenheitConversion(data.main.feels_like, 'f')}</span>` + '<sup><a href="k">°K</a>|<a href="c">°C</a>|<a href="f">°F</a></sup>';
+            temp.innerHTML = `<span class="k">${data.main.temp.toFixed(0)}</span> <span class="c">${simplCelsiusFahrenheitConversion(data.main.temp, 'c')}</span> <span class="f">${simplCelsiusFahrenheitConversion(data.main.temp, 'f')}</span>` + '<sup><a href="k">°K</a>|<a href="c">°C</a>|<a href="f">°F</a></sup>';
+
+            feels_like.innerHTML = `<span class="other">Feels like<></span><span class="k"> ${data.main.feels_like.toFixed(0)}</span> <span class="c"> ${simplCelsiusFahrenheitConversion(data.main.feels_like, 'c')}</span> <span class="f"> ${simplCelsiusFahrenheitConversion(data.main.feels_like, 'f')}</span>` + '<sup><a href="k">°K</a>|<a href="c">°C</a>|<a href="f">°F</a></sup>';
 
             humidity.innerHTML = `<span class="other">Humidity <></span><span class="other"> ${data.main.humidity}%</span>`;
             pressure.innerHTML = `<span class="other">Pressure <></span><span class="other"> ${data.main.pressure}hPa</span>`;
             visibility.innerHTML = `<span class="other">Visibility <>&nbsp;</span><span class="other">  ${data.visibility}m</span>`;
-            wind_speed.innerHTML = `<span class="other">Wind Speed <></span><span class="other"> ${(data.wind.speed * 3600/1000).toFixed(0)}km/h</span>`;
+            wind_speed.innerHTML = `<span class="other">Wind Speed <></span><span class="other"> ${(data.wind.speed * 3600 / 1000).toFixed(0)}km/h</span>`;
 
-        content.textContent = 'Feeling ' + data.feeling,
+            content.textContent = 'Feeling ' + data.feeling,
 
-        canva =    document.getElementById('myChart');
+                canva = document.getElementById('myChart');
 
-        performFetch(`${urlOneCall}?lat=${data.latitude}&lon=${data.longitude}&exclude=current,minutely,alerts&appid=${keyOWM}`)
+            performFetch(`${urlOneCall}?lat=${data.latitude}&lon=${data.longitude}&exclude=current,minutely,alerts&appid=${keyOWM}`)
 
-            .then(function (data) {
-                
-                activeCity = data;
+                .then(function (data) {
 
-                activeCity.hourlyBackedUp = activeCity.hourly;
+                    activeCity = data;
 
-                activeCity.hourly = toCelsiusOrFahrenheit(activeCity.hourly, 'c');
+                    activeCity.hourlyBackedUp = activeCity.hourly;
 
-                activeCity.hourly.degree = 'c';
-                
-                createDailyEntries(data);
+                    activeCity.hourly = toCelsiusOrFahrenheit(activeCity.hourly, 'c');
 
-                return data;
-            }).then(function(data){
-               
-               
-                drawChart(data);
-            });
+                    activeCity.hourly.degree = 'c';
+
+                    createDailyEntries(data);
+
+                    return data;
+                }).then(function (data) {
+
+
+                    drawChart(data);
+                });
 
             entryHolder.style.display = 'block';
             canvas.style.display = 'block';
-            
-    })(): (function() {// hide Chart and EntryHolder if data is undefined
-    
-       entryHolder.style.display = 'none';
-       canvas.style.display = 'none';
-       
-      
-    
-    })() ;
+
+        })() : (function () { // hide Chart and EntryHolder if data is undefined
+
+            entryHolder.style.display = 'none';
+            canvas.style.display = 'none';
+
+
+        })();
 
     }
 // eventListener of generate button
@@ -275,7 +279,7 @@ generate.addEventListener('click', (e) => {
 
             .then(async function (data) {
 
-              return  postToEndpoint('/post-project-data', {
+                return postToEndpoint('/post-project-data', {
                     zip: zip.value,
                     longitude: data.coord.lon,
                     latitude: data.coord.lat,
@@ -288,14 +292,14 @@ generate.addEventListener('click', (e) => {
                     weather: data.weather
                 })
 
-                   
+
             }).then(function (data) {
 
                 updateUI(data);
             })
 
     } catch (err) {
-       
+
 
         error.textContent = err.message;
         error.style.display = "block";
@@ -316,7 +320,7 @@ const eventListener = el => {
 
     ShowHideSpan(thref);
 
-    activeCity.hourly = activeCity.hourlyBackedUp ;
+    activeCity.hourly = activeCity.hourlyBackedUp;
 
 
     activeCity.hourly = toCelsiusOrFahrenheit(activeCity.hourly, thref);
@@ -324,8 +328,6 @@ const eventListener = el => {
     activeCity.hourly.degree = thref;
 
     drawChart(activeCity);
-
-   
 
 
 };
@@ -341,13 +343,13 @@ const createDailyEntries = async data => {
 
         html = '';
 
-        keys.forEach(key => {
-            
-            const dateString = new Date(data.daily[key].dt * 1000).toString();// Convert date to String
+    keys.forEach(key => {
 
-            days.push( /([a-zA-Z]+)/.exec(dateString)[1] ); // Extract day name only
-        
-        });
+        const dateString = new Date(data.daily[key].dt * 1000).toString(); // Convert date to String
+
+        days.push(/([a-zA-Z]+)/.exec(dateString)[1]); // Extract day name only
+
+    });
 
     keys.forEach(function (k) {
 
@@ -366,7 +368,7 @@ const createDailyEntries = async data => {
                                 </div>
                         
                                 <div id="temp${i}"><span class="k">${data.daily[i].temp.day.toFixed(0)}</span> <span
-                                    class="c">${simplCelsiusFahrenheitConversion(data.daily[i].temp.day,'c')}</span> <span class="f">${simplCelsiusFahrenheitConversion(data.daily[i].temp.day, 'f' )}</span><sup><a href="k">°K</a>|<a href="c">°C</a>|<a href="f">°F</a></sup>
+                                    class="c">${simplCelsiusFahrenheitConversion(data.daily[i].temp.day, 'c')}</span> <span class="f">${simplCelsiusFahrenheitConversion(data.daily[i].temp.day, 'f')}</span><sup><a href="k">°K</a>|<a href="c">°C</a>|<a href="f">°F</a></sup>
                                 </div>
                             </div>
                         </div>`;
@@ -388,93 +390,89 @@ const createDailyEntries = async data => {
     ShowHideSpan('c');
 
     activeDeactLink('c');
-  
+
     return data;
 },
 
-// Draw chart function
-// Stacked line charts with JS => codepen/chartjs
+    // Draw chart function
+    // Stacked line charts with JS => codepen/chartjs
 
-// https://codepen.io/natenorberg/pen/WwqRar
+    // https://codepen.io/natenorberg/pen/WwqRar
 
-//https://www.chartjs.org/docs/latest/
+    //https://www.chartjs.org/docs/latest/
 
-drawChart = async data => {
-
-   
-
-    const ctx = document.getElementById("myChart").getContext("2d"),
+    drawChart = async data => {
 
 
-    refubrishedData = [],
-
-    xLabels = [],
-
-    colors = {
-        color: {
-            fill: '#d5e0f7',
-            stroke: '#3b4a6b',
-        },
-  
-    };
-
- let i = 0;
-    forEach.call(data.hourly, item => {
-
-         refubrishedData.push (item.temp);
-        xLabels.push (new Date(item.dt* 1000).getHours()+':00:00');
-    });
+        const ctx = document.getElementById("myChart").getContext("2d"),
 
 
-   
+            refubrishedData = [],
 
-    const slicedData = refubrishedData.slice(0, 24);
+            xLabels = [],
 
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: xLabels.slice(0,24), //Only 24hours
-            datasets: [{
-                label: 'temperature °'+data.hourly.degree.toUpperCase(),
-                fill: true,
-                backgroundColor: colors.color.fill,
-                pointBackgroundColor: colors.color.stroke,
-                borderColor: colors.color.stroke,
-                pointHighlightStroke: colors.color.stroke,
-                borderCapStyle: 'butt',
-                data: slicedData //Only 24 hours
+            colors = {
+                color: {
+                    fill: '#d5e0f7',
+                    stroke: '#3b4a6b',
+                },
 
-            }]
-        },
-        options: {
-            responsive: false,
-            // Can't just `stacked: true` like the docs say
-            scales: {
-                yAxes: [{
-                    stacked: true,
+            };
 
-                    ticks: {
-                        beginAtZero: false,
-                        steps: 10,
-                        stepValue: 5,
-                        suggestedMax: Math.max(...slicedData) * 1.2
-                    },
+        let i = 0;
+        forEach.call(data.hourly, item => {
 
-        
-                    
+            refubrishedData.push(item.temp);
+            xLabels.push(new Date(item.dt * 1000).getHours() + ':00:00');
+        });
+
+
+        const slicedData = refubrishedData.slice(0, 24);
+
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: xLabels.slice(0, 24), //Only 24hours
+                datasets: [{
+                    label: 'temperature °' + data.hourly.degree.toUpperCase(),
+                    fill: true,
+                    backgroundColor: colors.color.fill,
+                    pointBackgroundColor: colors.color.stroke,
+                    borderColor: colors.color.stroke,
+                    pointHighlightStroke: colors.color.stroke,
+                    borderCapStyle: 'butt',
+                    data: slicedData //Only 24 hours
+
                 }]
             },
-            animation: {
-                duration: 750,
-            },
-        }
-    });
-// added because height and width of chart increase strangely!
+            options: {
+                responsive: false,
+                // Can't just `stacked: true` like the docs say
+                scales: {
+                    yAxes: [{
+                        stacked: true,
 
-    const canvas = document.getElementById('myChart');
-    canvas.setAttribute('height', '400');
-    canvas.setAttribute('width', '400');
-};
+                        ticks: {
+                            beginAtZero: false,
+                            steps: 10,
+                            stepValue: 5,
+                            suggestedMax: Math.max(...slicedData) * 1.2
+                        },
+
+
+                    }]
+                },
+                animation: {
+                    duration: 750,
+                },
+            }
+        });
+        // added because height and width of chart increase strangely!
+
+        const canvas = document.getElementById('myChart');
+        canvas.setAttribute('height', '400');
+        canvas.setAttribute('width', '400');
+    };
 
 // more help functions
 
@@ -485,7 +483,7 @@ function formatDate(d) {
 // JQuery3.5.1 IsEmptyObject
 // https://code.jquery.com/jquery-3.5.1.js
 
- function isEmptyObj(obj) {
+function isEmptyObj(obj) {
 
 
     for (let prop in obj) {
@@ -510,4 +508,3 @@ function formatDate(d) {
         });
 
 })();
-

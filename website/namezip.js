@@ -1,10 +1,8 @@
+city.addEventListener('change', (e) => {
 
 
-city.addEventListener('change', (e)=> {
+    try {
 
-   
-    try{
-       
         if (!!e.target.value) {
 
             if (!!filtered[selectedIdx]['primary_city']) {
@@ -17,7 +15,7 @@ city.addEventListener('change', (e)=> {
             }
         }
 
-    }catch(error){
+    } catch (error) {
 
 
     }

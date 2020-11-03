@@ -13,11 +13,10 @@
 <body>
     <header class=" headline">
         <h2 class="holder container ">
-        Weather Journal App
+            Weather Journal App
         </h2>
-</header>
+    </header>
     <div id="app">
-       
         <div class="input-container box">
             <h3 class="title">Weather application inputs</h3>
             <div class="holder zip">
@@ -36,71 +35,52 @@
                 <!--country code-->
             </div>
         </div>
-
         <h4 class="title">How are you feeling today?</h4>
         <div class="holder feel box">
-           
-            <textarea class="myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
+            <textarea class="myInput" id="feelings" placeholder="Enter your feelings here" rows="9"
+                cols="50"></textarea>
             <button id="generate" type="submit"> Generate </button>
         </div>
-
-        <div id="error" class="box"></div> <!--  errors sink --> 
-
+        <div id="error" class="box"></div>
+        <!--  errors sink -->
         <h4 class="title">Most Recent Entry (Today)</h4>
         <div class="holder entry box">
-           
-          
-           
             <div id="entryHolder" class="box-border">
                 <div>
-                                    <div>
-                                        <h2 id="name"></h2>
-                                        <div id="date"></div>
-                                        <div id="desc"></div>
-                                    </div>
-                                    <div>
-                                        <div><img src="" alt="" id="icon"></div>
-                                    
-                                        <div id="temp"></div>
-                                        <div id="content"></div>
-                                    </div>
-
+                    <div>
+                        <h2 id="name"></h2>
+                        <div id="date"></div>
+                        <div id="desc"></div>
+                    </div>
+                    <div>
+                        <div><img src="" alt="" id="icon"></div>
+                        <div id="temp"></div>
+                        <div id="content"></div>
+                    </div>
                 </div>
-
                 <div class="others">
-
                     <div id="feels_like"></div>
                     <div id="humidity"></div>
                     <div id="wind_speed"></div>
                     <div id="pressure"></div>
                     <div id="visibility"></div>
-           
                 </div>
-                  
-                  </div>
-
+            </div>
             <!-- https://www.chartjs.org/docs/latest/ -->
             <canvas id="myChart" width="400" height="400"></canvas>
-       
         </div>
-
-        
-
         <div id="container" class="holder entries container">
-                <h4 class="title">Most Recent Entries (Next  comming days)</h4>
-                <div id="entriesHolder" class="box">
-                    
-                </div>
-            
+            <h4 class="title">Most Recent Entries (Next comming days)</h4>
+            <div id="entriesHolder" class="box">
+            </div>
         </div>
     </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
-            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
-            crossorigin="anonymous"></script>
-        <script src="app.js" type="text/javascript"></script>
-        <script src="autocompletion.js" type="text/javascript"></script>
-        <script src="namezip.js" type="text/javascript"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+        crossorigin="anonymous"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <script src="autocompletion.js" type="text/javascript"></script>
+    <script src="namezip.js" type="text/javascript"></script>
 </body>
 
 </html>
