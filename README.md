@@ -16,6 +16,10 @@ This project uses:
 ## deployment
 
 deployed to heroku free online hosting
+- view here
+[![free online hosting at heroku](application deplyed to heroku for free)](https://weather-app-journal.herokuapp.com/)
+- make sure to allow http on your browser
+[![browsers mixed content](mixed content allowance)](https://docs.adobe.com/content/help/en/target/using/experiences/vec/troubleshoot-composer/mixed-content.html)
 
 ## Instructions
 This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
@@ -45,3 +49,4 @@ Switch between Temperature degrees (Kelvin, Celsius, Fahrenheit)
 
 ## Extras
 If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
+
