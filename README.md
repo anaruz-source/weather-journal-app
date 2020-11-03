@@ -1,9 +1,9 @@
 # Weather-Journal App Project
 [![version](https://img.shields.io/badge/version-v1.1.0-brightgreen)]() 
-[![Express 4.17.1](https://img.shields.io/badge/dependencies-node.v12.19.0-blue)](https://nodejs.org/en/docs/) 
+[![node 12.19.0](https://img.shields.io/badge/dependencies-node.v12.19.0-blue)](https://nodejs.org/en/docs/) 
 [![Express 4.17.1](https://img.shields.io/badge/dependencies-express.v4.17.1-blue)](https://registry.npmjs.org/express/-/express-4.17.1.tgz) 
-[![Express 4.17.1](https://img.shields.io/badge/dependencies-bodyparser.v1.19.0-blue)]("https://registry.npmjs.org/express/-/express-4.17.1.tgz) 
-[![Express 4.17.1](https://img.shields.io/badge/dependencies-cors.v2.8.5-blue)](https://registry.npmjs.org/cors/-/cors-2.8.5.tgz) 
+[![bodyparser 1.19.0](https://img.shields.io/badge/dependencies-bodyparser.v1.19.0-blue)]("https://registry.npmjs.org/express/-/express-4.17.1.tgz) 
+[![cors 2.8.5](https://img.shields.io/badge/dependencies-cors.v2.8.5-blue)](https://registry.npmjs.org/cors/-/cors-2.8.5.tgz) 
 [![license](https://img.shields.io/badge/licence-MIT-brightgreen)](https://opensource.org/licenses/MIT) 
 ## Overview
 This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
