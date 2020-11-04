@@ -53,17 +53,19 @@ If you are interested in testing your code as you go, you can use `tests.js` as 
 
 1. [Udacity frontend nanodegree program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
 
-2. [github readme markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-3. [display OWM icon](https://stackoverflow.com/questions/44177417/how-to-display-openweathermap-weather-icon)
+2. [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+3. [github readme markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-4. [codepen stacked chart with chart.js](https://codepen.io/natenorberg/pen/WwqRar)
+4. [display OWM icon](https://stackoverflow.com/questions/44177417/how-to-display-openweathermap-weather-icon)
 
-5. [chart.js website](https://www.chartjs.org/docs/latest/)
+5. [codepen stacked chart with chart.js](https://codepen.io/natenorberg/pen/WwqRar)
 
-6. [JQuery 3.5.1](https://code.jquery.com/jquery-3.5.1.js)
+6. [chart.js website](https://www.chartjs.org/docs/latest/)
 
-7. [autocompleter from opeclassrooms]( https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/2725496-tp-un-systeme-dauto-completion)
+7. [JQuery 3.5.1](https://code.jquery.com/jquery-3.5.1.js)
+
+8. [autocompleter from opeclassrooms](https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/2725496-tp-un-systeme-dauto-completion)
 
 9. [event keyCode deprecated and workaround](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)
 
