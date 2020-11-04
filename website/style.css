@@ -94,7 +94,7 @@ header {
 .entry {
 	display: flex;
 	align-items: flex-start;
-	justify-content: space-between;
+	justify-content: center;
 	flex-wrap: wrap;
 }
 
@@ -335,6 +335,11 @@ textarea:focus {
 		flex-wrap: wrap;
 		justify-content: space-between;
 	}
+	.entry {
+
+	justify-content: space-between;
+
+}
 }
 
 
