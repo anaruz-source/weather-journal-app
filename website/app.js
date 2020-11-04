@@ -89,9 +89,10 @@ const forEach = Array.prototype.forEach,
 
         sp.className == className ? sp.style.display = 'inline' : sp.style.display = 'none'
     });
+  
+    // activate/Deactivate anchors, get the last char of the href absolute path attr using the trick below a.href.length - 1
 
-
-activeDeactLink = async href => forEach.call(anchors, a => a.href[a.href.length - 1] == href ? (a.style.textDecoration = 'none', a.style.color = 'green') : (a.style.textDecoration = 'underline', a.style.color = ''));
+    activeDeactLink = async href => forEach.call(anchors, a => a.href[a.href.length - 1] == href ? (a.style.textDecoration = 'none', a.style.color = 'green') : (a.style.textDecoration = 'underline', a.style.color = ''));
 
 /*********************************************************************
  * ***************************************************

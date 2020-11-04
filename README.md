@@ -32,7 +32,7 @@ With autocompleter you can alleviate  burden of seeking zip code:
 - Click generate button
 
 ### step 1
--- Type initial of city name
+-- Type initial zip code in the zip field, or city name, in the first text field,  if you don't know the zip code of a city. Known to yield results from openweatherapp.org: Cisco, Holtsville, Citra, Chicopee, New york
 
 ![autocompletion](https://github.com/anaruz-source/weather-journal-app/blob/master/readmeassets/auto.png?raw=true)
 ### step 2
@@ -50,6 +50,7 @@ Switch between Temperature units (Kelvin, Celsius, Fahrenheit) by clicking on re
 If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
 
 ## references
+
 1. [Udacity frontend nanodegree program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011)
 
 2. [github readme markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
@@ -64,8 +65,10 @@ If you are interested in testing your code as you go, you can use `tests.js` as 
 
 7. [autocompleter from opeclassrooms]( https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/2725496-tp-un-systeme-dauto-completion)
 
-9. [event key code deprecated and workaround](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)
+9. [event keyCode deprecated and workaround](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode)
 
 10. [bootstrap container and media queries](https://getbootstrap.com/docs/4.4/layout/overview/)
 
 11. [zip codes database](https://www.unitedstateszipcodes.org/zip-code-database/)
+
+12. [deployment with express](https://stackoverflow.com/questions/36112119/heroku-deployment-with-express-js-is-not-happening)
