@@ -32,7 +32,7 @@ With autocompleter you can alleviate  burden of seeking zip code:
 - Click generate button
 
 ### step 1
--- Type initial zip code in the zip field, or city name, in the first text field,  if you don't know the zip code of a city. Known to yield results from openweatherapp.org: Cisco, Holtsville, Citra, Chicopee, New york
+-- Type initial zip code in the zip field, or city name, in the first text field,  if you don't know the zip code of a city. Known to yield results from https://openweathermap.org/api: Cisco, Holtsville, Citra, Chicopee, New york, Chester,
 
 ![autocompletion](https://github.com/anaruz-source/weather-journal-app/blob/master/readmeassets/auto.png?raw=true)
 ### step 2
