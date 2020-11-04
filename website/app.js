@@ -435,7 +435,7 @@ const createDailyEntries = async data => {
             data: {
                 labels: xLabels.slice(0, 24), //Only 24hours
                 datasets: [{
-                    label: 'temperature °' + data.hourly.degree.toUpperCase(),
+                    label: 'temperature °' + data.hourly.degree.toUpperCase() +'24 hours',
                     fill: true,
                     backgroundColor: colors.color.fill,
                     pointBackgroundColor: colors.color.stroke,
